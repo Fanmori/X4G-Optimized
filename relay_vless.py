@@ -131,15 +131,12 @@ async def parse_vless_header(chunk: bytes):
 # lock فقط برای محافظت در برابر تغییرات داشبورد 필요ه.
 
 async def check_and_use(uid: str, n: int) -> bool:
-    async with LINKS_LOCK:
-        link = LINKS.get(uid)
-        if link is None:
-            return False
-        if not is_link_allowed(link):
-            return False
-        link["used_bytes"] += n
-        stats["total_bytes"] += n
-        hourly_traffic[_get_hour_key()] += n  # ← کش شده، دیگه strftime نیست
+    link = LINKS.get(uid)
+    if link is None: return False
+    if not is_link_allowed(link): return False
+    link["used_bytes"] += n
+    stats["total_bytes"] += n
+    hourly_traffic[_get_hour_key()] += n
     return True
 
 
