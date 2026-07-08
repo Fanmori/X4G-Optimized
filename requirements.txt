@@ -5,8 +5,9 @@
 #   - websockets آپدیت شد
 # ═══════════════════════════════════════════════════════
 
-fastapi>=0.115.0
-uvicorn[standard]>=0.32.0
-httpx[http2]>=0.27.0
-websockets>=14.0
-aiofiles>=24.1.0
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+httpx==0.25.1
+websockets==12.0
+aiofiles>=23.2.1
+httpx[http2]
